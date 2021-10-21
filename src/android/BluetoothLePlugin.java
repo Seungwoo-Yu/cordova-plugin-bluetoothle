@@ -3551,66 +3551,15 @@ public class BluetoothLePlugin extends CordovaPlugin {
   }
 
   private boolean isNotDisconnected(HashMap<Object, Object> connection, BluetoothDevice device, CallbackContext callbackContext) {
-    int state = Integer.valueOf(connection.get(keyState).toString());
-
-    //Determine whether the device is currently connected including connecting and disconnecting
-    //Certain actions like connect and reconnect can only be done while completely disconnected
-    if (state == BluetoothProfile.STATE_DISCONNECTED) {
-      return false;
-    }
-
-    JSONObject returnObj = new JSONObject();
-
-    addProperty(returnObj, keyError, errorIsNotDisconnected);
-    addProperty(returnObj, keyMessage, logIsNotDisconnected);
-
-    addDevice(returnObj, device);
-
-    callbackContext.error(returnObj);
-
     return true;
   }
 
   private boolean isDisconnected(HashMap<Object, Object> connection, BluetoothDevice device, CallbackContext callbackContext) {
-    int state = Integer.valueOf(connection.get(keyState).toString());
-
-    //Determine whether the device is currently disconnected NOT including connecting and disconnecting
-    //Certain actions like disconnect can be done while connected, connecting, disconnecting
-    if (state != BluetoothProfile.STATE_DISCONNECTED) {
-      return false;
-    }
-
-    JSONObject returnObj = new JSONObject();
-
-    addProperty(returnObj, keyError, errorIsDisconnected);
-    addProperty(returnObj, keyMessage, logIsDisconnected);
-
-    addDevice(returnObj, device);
-
-    callbackContext.error(returnObj);
-
-    return true;
+    return false;
   }
 
   private boolean isNotConnected(HashMap<Object, Object> connection, BluetoothDevice device, CallbackContext callbackContext) {
-    int state = Integer.valueOf(connection.get(keyState).toString());
-
-    //Determine whether the device is currently disconnected including connecting and disconnecting
-    //Certain actions like read/write operations can only be done while completely connected
-    if (state == BluetoothProfile.STATE_CONNECTED) {
-      return false;
-    }
-
-    JSONObject returnObj = new JSONObject();
-
-    addProperty(returnObj, keyError, errorIsNotConnected);
-    addProperty(returnObj, keyMessage, logIsNotConnected);
-
-    addDevice(returnObj, device);
-
-    callbackContext.error(returnObj);
-
-    return true;
+    return false;
   }
 
   private boolean wasConnected(String address, CallbackContext callbackContext) {

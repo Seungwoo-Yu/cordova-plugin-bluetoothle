@@ -3260,60 +3260,15 @@ NSString *const operationWrite = @"write";
 }
 
 - (BOOL) isNotDisconnected:(CBPeripheral *)peripheral :(CDVInvokedUrlCommand *)command {
-  if (peripheral.state == CBPeripheralStateDisconnected) {
-    return false;
-  }
-
-  NSMutableDictionary* returnObj = [NSMutableDictionary dictionary];
-
-  [self addDevice:peripheral :returnObj];
-
-  [returnObj setValue:errorIsNotDisconnected forKey:keyError];
-  [returnObj setValue:logIsNotDisconnected forKey:keyMessage];
-
-  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:returnObj];
-  [pluginResult setKeepCallbackAsBool:false];
-  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
   return true;
 }
 
 - (BOOL) isDisconnected:(CBPeripheral*)peripheral :(CDVInvokedUrlCommand *)command {
-  if (peripheral.state != CBPeripheralStateDisconnected) {
-    return false;
-  }
-
-  NSMutableDictionary* returnObj = [NSMutableDictionary dictionary];
-
-  [self addDevice:peripheral :returnObj];
-
-  [returnObj setValue:errorIsDisconnected forKey:keyError];
-  [returnObj setValue:logIsDisconnected forKey:keyMessage];
-
-  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:returnObj];
-  [pluginResult setKeepCallbackAsBool:false];
-  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
-  return true;
+  return false;
 }
 
 - (BOOL) isNotConnected:(CBPeripheral *)peripheral :(CDVInvokedUrlCommand *)command {
-  if (peripheral.state == CBPeripheralStateConnected) {
-    return false;
-  }
-
-  NSMutableDictionary* returnObj = [NSMutableDictionary dictionary];
-
-  [self addDevice:peripheral :returnObj];
-
-  [returnObj setValue:errorIsNotConnected forKey:keyError];
-  [returnObj setValue:logIsNotConnected forKey:keyMessage];
-
-  CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:returnObj];
-  [pluginResult setKeepCallbackAsBool:false];
-  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-
-  return true;
+  return false;
 }
 
 - (BOOL) isNotAddress:(NSUUID *)address :(CDVInvokedUrlCommand *)command {
