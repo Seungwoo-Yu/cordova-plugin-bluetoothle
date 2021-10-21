@@ -2232,18 +2232,18 @@ NSString *const operationWrite = @"write";
     return;
   }
 
-  NSArray* callbacks = [self getCallbacks:connection];
-  for (NSString* callback in callbacks) {
-    NSMutableDictionary* returnObj = [NSMutableDictionary dictionary];
-
-    [self addDevice:peripheral :returnObj];
-    [returnObj setValue:errorIsDisconnected forKey:keyError];
-    [returnObj setValue:logIsDisconnected forKey:keyMessage];
-
-    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:returnObj];
-    [pluginResult setKeepCallbackAsBool:false];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:callback];
-  }
+//  NSArray* callbacks = [self getCallbacks:connection];
+//  for (NSString* callback in callbacks) {
+//    NSMutableDictionary* returnObj = [NSMutableDictionary dictionary];
+//
+//    [self addDevice:peripheral :returnObj];
+//    [returnObj setValue:errorIsDisconnected forKey:keyError];
+//    [returnObj setValue:logIsDisconnected forKey:keyMessage];
+//
+//    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsDictionary:returnObj];
+//    [pluginResult setKeepCallbackAsBool:false];
+//    [self.commandDelegate sendPluginResult:pluginResult callbackId:callback];
+//  }
 
   //Get connect callback
   NSString* callback = [connection objectForKey:operationConnect];

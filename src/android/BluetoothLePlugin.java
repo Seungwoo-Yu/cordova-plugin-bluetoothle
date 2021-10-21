@@ -4019,17 +4019,17 @@ public class BluetoothLePlugin extends CordovaPlugin {
         pluginResult.setKeepCallback(true);
         callbackContext.sendPluginResult(pluginResult);
       } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
-        //Device was disconnected
-        CallbackContext[] callbacks = GetCallbacks(connection);
-        addProperty(returnObj, keyError, errorIsDisconnected);
-        addProperty(returnObj, keyMessage, logIsDisconnected);
-
-        for (CallbackContext callback : callbacks) {
-          callback.error(returnObj);
-        }
-
-        returnObj.remove(keyError);
-        returnObj.remove(keyMessage);
+//        //Device was disconnected
+//        CallbackContext[] callbacks = GetCallbacks(connection);
+//        addProperty(returnObj, keyError, errorIsDisconnected);
+//        addProperty(returnObj, keyMessage, logIsDisconnected);
+//
+//        for (CallbackContext callback : callbacks) {
+//          callback.error(returnObj);
+//        }
+//
+//        returnObj.remove(keyError);
+//        returnObj.remove(keyMessage);
 
         //Save the old discovered state
         Object discoveredState = connection.get(keyDiscoveredState);
