@@ -19,7 +19,7 @@ var bluetoothle = {
       return;
     }
 
-    if (sequence != this.nextExpected) console.warn("Received out of order: expected " + this.nextExpected +" got " + sequence);
+    // if (sequence !== this.nextExpected) console.warn("Received out of order: expected " + this.nextExpected +" got " + sequence);
 
     this.onHold[sequence] = obj;
 
